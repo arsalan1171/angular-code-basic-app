@@ -52,7 +52,7 @@ export class ProductComponent implements OnInit {
             this.products[objIndex].items = this.itemsReceived;
 
             //update average price
-            let averagePrice = (this.itemsReceived+this.products[objIndex].items) / this.pricePerItem;
+            let averagePrice = this.itemsReceived / this.pricePerItem;
             this.products[objIndex].price = parseFloat(averagePrice.toFixed(2));
 
             //clear the fields and display success message
