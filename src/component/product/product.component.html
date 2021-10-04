@@ -1,0 +1,48 @@
+<div class="container mt-4" >
+  <div class="title">
+    <h1> Add and remove Product</h1> 
+  </div>
+  <button type="button" class="btn btn-primary" (click)="changeForm()" >Add/Remove</button>
+    <form class="text-center border border-light p-5" action="#" name="myForm" >
+      <div class="row">
+        <div class="col">
+          <label class="float-left">Select Product</label>
+          <select class="form-control" (change)="onChange($event)" >
+            <option>select product</option>
+            <option *ngFor="let option of options" [value]="option.id">{{option.productName}}</option>
+          </select>
+      
+        <div  *ngIf="removeStock" class="form-group float-left mr-2">
+          <label class="float-left">email</label>
+          <input name='email' [(ngModel)]="email"  type="email" class="form-control mb-4" placeholder="email">
+        </div>
+
+        <div class="form-group float-left mr-2">
+          <label class="float-left">items received</label>
+          <input name='items' [(ngModel)]="itemsReceived"  type="number" class="form-control mb-4" placeholder="number of items">
+        </div>
+
+        <div *ngIf="removeStock == false" class="form-group float-left mr-2">
+            <label class="float-left">price per items received</label>
+            <input name="price" [(ngModel)]="pricePerItem" type="number" class="form-control mb-4"  placeholder="price">
+          </div>
+          
+        <button *ngIf="removeStock == false" type="submit" class="btn btn-primary mt-4" (click)="addRemoveStock(1)" >Add stock</button>   
+        <button *ngIf="removeStock" type="submit" class="btn btn-primary mt-4" (click)="addRemoveStock(2)" >Item Shipped</button>
+
+        <p class="mt-4">{{error}}</p>
+      </div>
+      </div>
+      </form>
+
+<div>
+  <ul *ngFor="let p of products" class="list-group mb-4 d-flex">
+    <li class="list-group-item  justify-content-between align-items-center d-flex">
+        Product {{p.productId}}
+      <p class="m-0">${{p.price}}</p>
+      <span class="badge badge-primary badge-pill">{{p.items}}</span>
+    </li>
+  </ul>
+</div>
+        
+</div>
